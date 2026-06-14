@@ -9,13 +9,16 @@ std::ifstream fIn;
 int currentLineNum;
 int lineIndex = 0;//一行n番目
 
+static int NextChar();
+static char* RemoveComment(char* s);
+
 /// <summary>
 /// 指定した名前のソースファイルを開く
 /// </summary>
 /// <param name="fileName">ソースファイル名</param>
 /// <returns>0,-1</returns>
-int OpenSourceFile(string& fileName) {
-    fIn.open(fileName.c_str());
+int OpenSourceFile(string fileName) {
+    fIn.open(fileName);
 
     if (!fIn) {
         cout << "ファイル " << fileName << " は開けませんわ！\n";
@@ -47,7 +50,11 @@ static int NextChar() {
         }
     }
 
-    ch = (int)lineBuffer[lineIndex++];
+    if (lineIndex >= 0 && (size_t)lineIndex < size(lineBuffer)) {
+        ch = (int)lineBuffer[lineIndex++];
+    }
+    else { LogError("アクセス違反ですわ～～～"); }
+    
     if (ch == 0) { lineIndex = -1; } //ch == null
 
     return ch;
@@ -59,7 +66,7 @@ static int NextChar() {
 /// <param name="s"></param>
 /// <returns></returns>
 static char* RemoveComment(char* s) {
-    int len = strlen(s);
+    int len = (int)strlen(s);
     char ws[MAX_LINE_LEN];
     char ch = 0;
     int j = 0;
@@ -77,7 +84,7 @@ static char* RemoveComment(char* s) {
     }
 
     ws[j] = 0;//null終端文字
-    strcpy(s, ws);
+    strcpy_s(s, MAX_LINE_LEN, ws);
 
     return s;
 }

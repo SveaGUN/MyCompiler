@@ -1,9 +1,11 @@
 #ifndef AKANE_H
 #define AKANE_H
 
+#include <iostream>
 #include <string>
 
 #include "Utility.h"
+#include "GetToken.h"
 
 namespace Opt {
     const std::string PRINT_LINE = "-printLine";

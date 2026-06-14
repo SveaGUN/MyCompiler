@@ -1,4 +1,4 @@
-#include "Utility.h"
+#include "Akane.h"
 
 using namespace std;
 
@@ -8,11 +8,11 @@ using namespace std;
 /// <param name="lhs">左辺</param>
 /// <param name="rhs">右辺/param>
 /// <returns>lhsとrhsが等しいならtrue</returns>
-bool CompareIgnoreCase(string& lhs, string& rhs)
+bool CompareIgnoreCase(string lhs, string rhs)
 {
     if (lhs.length() != rhs.length()) { return false; }
 
-    return std::equal(lhs.begin(), lhs.end(), rhs.begin(), CompareCharIgnoreCase);
+    return equal(lhs.begin(), lhs.end(), rhs.begin(), CompareCharIgnoreCase);
 }
 
 /// <summary>
@@ -21,7 +21,11 @@ bool CompareIgnoreCase(string& lhs, string& rhs)
 /// <param name="lhs">左辺</param>
 /// <param name="rhs">右辺</param>
 /// <returns>lhsとrhsが等しいならtrue</returns>
-bool CompareCharIgnoreCase(char& lhs, char& rhs)
+bool CompareCharIgnoreCase(char lhs, char rhs)
 {
     return (tolower(lhs) == tolower(rhs));
+}
+
+void LogError(std::string msg) {
+    cout << "エラー : " << msg << '\n';
 }
