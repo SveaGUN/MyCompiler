@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "Utility.h"
+
 namespace Opt {
     const std::string PRINT_LINE = "-printLine";
     const std::string PRINT_LINE_S = "-p";
@@ -15,6 +17,8 @@ namespace Opt {
     const std::string VERBOSE = "-verbose";
     const std::string VERBOSE_S = "-v";
 }
+
+constexpr int MAX_LINE_LEN = 1024;
 
 extern std::string SrcFileName;
 

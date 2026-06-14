@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 /// </summary>
 /// <param name="argc">引数の数</param>
 /// <param name="argv">引数</param>
-/// <returns></returns>
+/// <returns>0,-1</returns>
 int ProcessCmdLine(int argc, char* argv[]) {
     using namespace Opt;
 

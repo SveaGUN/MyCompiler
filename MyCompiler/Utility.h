@@ -5,4 +5,5 @@
 
 bool CompareIgnoreCase(std::string lhs, std::string rhs);
 bool CompareCharIgnoreCase(char lhs, char rhs);
+void LogError(std::string msg);
 #endif
