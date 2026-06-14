@@ -1,4 +1,16 @@
-﻿#include <iostream>
+﻿#ifdef _MSC_VER
+//visual studio
+#include <process.h>
+#define EXECUTE _execlp
+#define VM "akvm"
+#else
+//unix系
+#include <unistd.h>
+#define EXECUTE execlp
+#define VM "./akvm"
+#endif
+
+#include <iostream>
 #include <string>
 
 #include "Akane.h" 
@@ -15,6 +27,8 @@ bool useEXECUTE = false;
 bool useDISP_CODE = false;
 bool useVERBOSE = false;
 
+bool isSuccess = false;
+
 //プロトタイプ宣言
 int ProcessCmdLine(int argc, char* argv[]);
 
@@ -30,6 +44,9 @@ int main(int argc, char* argv[]) {
     //ソースを閉じる
 
     //実行オプション コンパイル成功時に実行
+    if (useEXECUTE && isSuccess) {
+
+    }
 
     return 0;
 }
@@ -42,7 +59,7 @@ int main(int argc, char* argv[]) {
 /// <returns></returns>
 int ProcessCmdLine(int argc, char* argv[]) {
     using namespace Opt;
-    
+
     for (int i = 1; i < argc; ++i) {
         string arg = string(argv[i]);
 
