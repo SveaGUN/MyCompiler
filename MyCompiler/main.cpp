@@ -1,12 +1,12 @@
 ﻿#ifdef _MSC_VER
 //visual studio
 #include <process.h>
-#define EXECUTE _execlp
+#define EXEC _execlp
 #define VM "akvm"
 #else
 //unix系
 #include <unistd.h>
-#define EXECUTE execlp
+#define EXEC execlp
 #define VM "./akvm"
 #endif
 
@@ -14,7 +14,7 @@
 #include <string>
 
 #include "Akane.h" 
-#include "util.h"
+#include "Utility.h"
 
 using namespace std;
 

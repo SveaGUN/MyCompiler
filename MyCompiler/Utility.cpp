@@ -1,4 +1,4 @@
-#include "util.h"
+#include "Utility.h"
 
 /// <summary>
 /// 大文字小文字を無視して文字列を比較する
